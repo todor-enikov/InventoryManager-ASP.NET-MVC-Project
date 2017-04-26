@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace InventoryManager.Data.Models
 {
-    public class Class1
+    public enum ClothesType
     {
+        Tshirt=0,
+
     }
 }

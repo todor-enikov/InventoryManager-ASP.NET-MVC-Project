@@ -57,19 +57,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="IInventoryManagerDbContext.cs" />
     <Compile Include="InventoryManagerDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\EfGenericRepository.cs" />
+    <Compile Include="Repositories\IEfGenericRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\InventoryManager.Common\InventoryManager.Common.csproj">
       <Project>{a08a98d2-679e-4bc8-85ab-c7461d1c91b3}</Project>

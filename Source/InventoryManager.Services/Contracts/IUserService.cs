@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InventoryManager.Services
+namespace InventoryManager.Services.Contracts
 {
-    public class Class1
+    public interface IUserService
     {
     }
 }

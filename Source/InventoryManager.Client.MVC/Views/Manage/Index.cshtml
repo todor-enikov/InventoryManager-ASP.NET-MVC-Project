@@ -1,0 +1,43 @@
+﻿@model InventoryManager.Client.MVC.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>User name:</dt>
+        <dd>
+            @Html.Label(Model.UserName)
+        </dd>
+        <dt>First name:</dt>
+        <dd>
+            @Html.Label(Model.FirstName)
+        </dd>
+        <dt>Last name:</dt>
+        <dd>
+            @Html.Label(Model.LastName)
+        </dd>
+        <dt>E-mail:</dt>
+        <dd>
+            @Html.Encode(Model.Email)
+        </dd>
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+    </dl>
+</div>

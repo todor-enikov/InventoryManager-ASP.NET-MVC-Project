@@ -17,6 +17,7 @@ namespace InventoryManager.Data.Models
         Skirt = 6,
         Dress = 7,
         Suit = 8,
-        Socks = 9
+        Boots = 9,
+        Socks = 10
     }
 }

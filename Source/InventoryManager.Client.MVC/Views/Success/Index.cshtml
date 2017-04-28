@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Success page.";
+}
+<br />
+<br />
+<div class="row">
+    <div class="jumbotron">
+        <h4>You successfully completed the operation! You can click the button below and you will be redirected to home page :)</h4>
+        <div class="col-md-offset-5">
+            @using (Html.BeginForm("Index", "Success", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input type="submit" class="btn btn-default" value="Go to home page!" />
+            }
+        </div>
+    </div>
+</div>

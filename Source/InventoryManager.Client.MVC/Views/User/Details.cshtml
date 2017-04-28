@@ -81,7 +81,7 @@
         {
             <div class="row form-group">
                 <div class="col-md-12 text-center">
-                    <label>All articles of these user.</label>
+                    <label>All clothes added by these user.</label>
                 </div>
             </div>
             foreach (var clothes in Model.Clothes)
@@ -91,7 +91,7 @@
                         @Html.Label(clothes.Name)
                     </div>
                     <div class="col-md-4">
-                        @Html.ActionLink("View article", "Details", "News", new { @id = clothes.Id }, null)
+                        @Html.ActionLink("View clothes", "Details", "Clothes", new { @id = clothes.Id }, null)
                     </div>
                 </div>
             }

@@ -1,0 +1,21 @@
+﻿@model List<InventoryManager.Client.MVC.Models.UserViewModels.AllUsersViewModel>
+
+
+@{
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 5);
+}
+
+<br />
+<div class="row">
+    <div class="well col-md-6 col-md-offset-3">
+        <br />
+        @grid.GetHtml(
+    tableStyle: "table table-striped table-hover form-group",
+    headerStyle: "text-center",
+    columns: grid.Columns(
+        grid.Column("FirstName", "First name"),
+        grid.Column("Username", "Username"),
+        grid.Column(columnName: "Details", format: (item) => Html.ActionLink("Go to details", "Details", "User", new { id = item.Id }, null))
+      ))
+    </div>
+</div>

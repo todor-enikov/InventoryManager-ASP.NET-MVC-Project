@@ -14,5 +14,7 @@ namespace InventoryManager.Services.Contracts
         User GetUserById(string id);
 
         IQueryable<User> GetUsersByUserName(string username);
+
+        void UpdateUserInformation(User userToUpdate);
     }
 }

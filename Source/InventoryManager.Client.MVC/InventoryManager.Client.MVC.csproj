@@ -245,6 +245,7 @@
     <Content Include="Views\Shared\_NoResults.cshtml" />
     <Content Include="Views\Shared\_AllUsers.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

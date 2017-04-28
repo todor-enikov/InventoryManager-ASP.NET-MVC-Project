@@ -1,0 +1,62 @@
+﻿@model InventoryManager.Client.MVC.Models.UserViewModels.UserDetailsViewModel
+
+@{
+    ViewBag.Title = "Edit info for user.";
+}
+<br />
+<br />
+<div class="row">
+    <h1 class="text-center">User edit page!</h1>
+    <div class="well col-md-6 col-md-offset-3">
+        <br />
+        @using (Html.BeginForm("Edit", "User", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("Username: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(m => m.UserName, new { @Value = Model.UserName, @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("First name: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(m => m.FirstName, new { @Value = Model.FirstName, @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("Last name: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(m => m.LastName, new { @Value = Model.LastName, @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LastName)
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("E-mail: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(m => m.Email, new { @Value = Model.Email, @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <input type="submit" value="Edit user information!" class="form-control">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

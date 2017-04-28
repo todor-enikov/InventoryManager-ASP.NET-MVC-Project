@@ -32,5 +32,11 @@ namespace InventoryManager.Services
         {
             return this.userRepo.GetUsersByUserName(username);
         }
+
+        public void UpdateUserInformation(User userToUpdate)
+        {
+            this.userRepo.Update(userToUpdate);
+            this.userRepo.SaveChanges();
+        }
     }
 }

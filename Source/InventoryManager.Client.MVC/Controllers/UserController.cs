@@ -73,6 +73,39 @@ namespace InventoryManager.Client.MVC.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            var userById = this.userService
+                               .GetUserById(id);
+
+            var viewModel = new UserDetailsViewModel()
+            {
+                FirstName = userById.FirstName,
+                LastName = userById.LastName,
+                UserName = userById.UserName,
+                Email = userById.Email
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(UserDetailsViewModel model)
+        {
+            var userToUpdate = userService.GetUserById(model.Id);
+
+            userToUpdate.FirstName = model.FirstName;
+            userToUpdate.LastName = model.LastName;
+            userToUpdate.UserName = model.UserName;
+            userToUpdate.Email = model.Email;
+
+            this.userService.UpdateUserInformation(userToUpdate);
+
+            return RedirectToAction("Details", "User", new { id = model.Id });
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Search(string search)

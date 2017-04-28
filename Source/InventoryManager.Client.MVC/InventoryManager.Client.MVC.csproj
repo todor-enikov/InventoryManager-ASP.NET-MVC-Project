@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ClothesViewModels\AddClothesViewModel.cs" />
+    <Compile Include="Models\ClothesViewModels\AllClothesViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserViewModels\AllUsersViewModel.cs" />
     <Compile Include="Models\UserViewModels\UserClothesViewModel.cs" />
@@ -251,6 +252,7 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\Success\Index.cshtml" />
     <Content Include="Views\Clothes\Index.cshtml" />
+    <Content Include="Views\Shared\_AllClothes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

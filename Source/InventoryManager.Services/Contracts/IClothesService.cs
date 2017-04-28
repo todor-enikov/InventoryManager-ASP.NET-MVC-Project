@@ -10,5 +10,7 @@ namespace InventoryManager.Services.Contracts
     public interface IClothesService
     {
         void AddNewClothes(Clothes clothes);
+
+        IQueryable<Clothes> GetAllClothes();
     }
 }

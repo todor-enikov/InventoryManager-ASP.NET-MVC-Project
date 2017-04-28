@@ -23,5 +23,10 @@ namespace InventoryManager.Services
             this.clothesRepository.Add(clothes);
             this.clothesRepository.SaveChanges();
         }
+
+        public IQueryable<Clothes> GetAllClothes()
+        {
+            return this.clothesRepository.All();
+        }
     }
 }

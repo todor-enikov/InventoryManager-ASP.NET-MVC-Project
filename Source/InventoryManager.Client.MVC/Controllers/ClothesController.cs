@@ -53,6 +53,27 @@ namespace InventoryManager.Client.MVC.Controllers
             return RedirectToAction("Index", "Success");
         }
 
+        [HttpGet]
+        public ActionResult Details(Guid id)
+        {
+            var clothesById = this.clothesService.GetClothesById(id);
+
+            var viewModel = new ClothesDetailsViewModel()
+            {
+                Id = clothesById.Id,
+                Name = clothesById.Name,
+                Description = clothesById.Description,
+                ImagePath = clothesById.ImagePath,
+                Price = clothesById.Price,
+                Quantity = clothesById.Quantity,
+                Size = clothesById.Size,
+                Type = clothesById.Type,
+                CreatedByUser = clothesById.User.UserName
+            };
+
+            return View(viewModel);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Search(string search)

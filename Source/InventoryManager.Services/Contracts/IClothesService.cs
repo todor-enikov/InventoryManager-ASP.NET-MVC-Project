@@ -13,6 +13,8 @@ namespace InventoryManager.Services.Contracts
 
         IQueryable<Clothes> GetAllClothes();
 
+        Clothes GetClothesById(Guid id);
+
         IQueryable<Clothes> GetClothesByName(string name);
     }
 }

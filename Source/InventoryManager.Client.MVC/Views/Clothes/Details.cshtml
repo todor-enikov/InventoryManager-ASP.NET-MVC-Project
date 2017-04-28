@@ -1,0 +1,67 @@
+﻿@model InventoryManager.Client.MVC.Models.ClothesViewModels.ClothesDetailsViewModel
+
+@{
+    ViewBag.Title = "Clothes details.";
+}
+<br />
+<br />
+<div class="row">
+    <h1 class="text-center">Clothes details page!</h1>
+    <div class="well col-md-6 col-md-offset-3">
+        <br />
+        <div class="row form-group">
+            <div class="col-md-12 text-center">
+                <h3>@Html.Encode(Model.Name)</h3>
+            </div>
+        </div>
+        <div class="row form-group">
+            <img src="@Url.Content(Model.ImagePath)" alt="Image" style="width:574px" />
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3 text-right">
+                <strong>Description: </strong>
+            </div>
+             @Html.Encode(Model.Description)
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3 text-right">
+                @Html.Label("Type: ")
+            </div>
+            <div class="col-md-3">
+                @Html.Encode(Model.Type.ToString())
+            </div>
+            <div class="col-md-3 text-right">
+                @Html.Label("Size: ")
+            </div>
+            <div class="col-md-3">
+                @Html.Encode(Model.Size.ToString())
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-3 text-right">
+                @Html.Label("Quantity: ")
+            </div>
+            <div class="col-md-3">
+                @Html.Encode(Model.Quantity.ToString())
+            </div>
+            <div class="col-md-3 text-right">
+                @Html.Label("Price: ")
+            </div>
+            <div class="col-md-3">
+                @Html.Encode(Model.Price.ToString())
+            </div>
+        </div>
+        @if (User.IsInRole("Administrator"))
+        {
+            <div class="row form-group">
+                <div class="col-md-6 text-right">
+                    @Html.Label("Edit clothes details: ")
+                </div>
+                <div class="col-md-6">
+                    @Html.ActionLink("Edit", "Edit", "Clothes", new { id = Model.Id }, null)
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

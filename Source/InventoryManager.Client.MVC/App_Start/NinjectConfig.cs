@@ -71,6 +71,8 @@ namespace InventoryManager.Client.MVC.App_Start
             kernel.Bind<IUserRepository>().To<UserRepository>();
 
             kernel.Bind<IUserService>().To<UserService>();
-        }        
+            kernel.Bind<IRoleService>().To<RoleService>();
+
+        }
     }
 }

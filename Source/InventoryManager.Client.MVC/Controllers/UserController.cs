@@ -1,5 +1,9 @@
-﻿using InventoryManager.Client.MVC.Models.UserViewModels;
+﻿using InventoryManager.Auth;
+using InventoryManager.Client.MVC.Models.UserViewModels;
+using InventoryManager.Common;
 using InventoryManager.Services.Contracts;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +15,34 @@ namespace InventoryManager.Client.MVC.Controllers
     public class UserController : Controller
     {
         private readonly IUserService userService;
+        private readonly IRoleService roleService;
 
-        public UserController(IUserService userService)
+        private UserManager userManager;
+
+        public UserController(IUserService userService, IRoleService roleService)
         {
             this.userService = userService;
+            this.roleService = roleService;
         }
 
-        // GET: User
+        public UserController(UserManager userManager)
+        {
+            UserManager = userManager;
+        }
+
+        public UserManager UserManager
+        {
+            get
+            {
+                return userManager ?? HttpContext.GetOwinContext().GetUserManager<UserManager>();
+            }
+            private set
+            {
+                userManager = value;
+            }
+        }
+
+        [HttpGet]
         public ActionResult Index()
         {
             var userFromDatabase = this.userService.GetAllUsers();
@@ -58,6 +83,8 @@ namespace InventoryManager.Client.MVC.Controllers
                 userClothes.Add(currentClothes);
             }
             //var role = userById.Roles.Where(r => r.UserId == id).ToList()[0].UserId.;
+            var userRole = userById.Roles.SingleOrDefault().RoleId;
+            var role = roleService.GetCurrentRoleOfUser(userRole);
 
             var viewModel = new UserDetailsViewModel()
             {
@@ -67,12 +94,32 @@ namespace InventoryManager.Client.MVC.Controllers
                 UserName = userById.UserName,
                 Email = userById.Email,
                 Clothes = userClothes,
-                Role = "To Do:"
+                Role = role
             };
 
             return View(viewModel);
         }
 
+        [HttpPost]
+        public ActionResult Details(string id, string un)
+        {
+            var userById = this.userService.GetUserById(id);
+            var userRole = userById.Roles.SingleOrDefault().RoleId;
+
+            var role = roleService.GetCurrentRoleOfUser(userRole);
+            if (role == ApplicationConstants.AdminRole)
+            {
+                UserManager.AddToRole(id, ApplicationConstants.UserRole);
+                UserManager.RemoveFromRole(id, ApplicationConstants.AdminRole);
+            }
+            else
+            {
+                UserManager.AddToRole(id, ApplicationConstants.AdminRole);
+                UserManager.RemoveFromRole(id, ApplicationConstants.UserRole);
+            }
+
+            return RedirectToAction("Index", "Success");
+        }
         [HttpGet]
         public ActionResult Edit(string id)
         {

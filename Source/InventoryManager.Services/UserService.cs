@@ -11,32 +11,32 @@ namespace InventoryManager.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUserRepository userRepo;
+        private readonly IUserRepository userRepository;
 
         public UserService(IUserRepository userRepo)
         {
-            this.userRepo = userRepo;
+            this.userRepository = userRepo;
         }
 
         public IQueryable<User> GetAllUsers()
         {
-            return this.userRepo.All();
+            return this.userRepository.All();
         }
 
         public User GetUserById(string id)
         {
-            return this.userRepo.GetById(id);
+            return this.userRepository.GetById(id);
         }
 
         public IQueryable<User> GetUsersByUserName(string username)
         {
-            return this.userRepo.GetUsersByUserName(username);
+            return this.userRepository.GetUsersByUserName(username);
         }
 
         public void UpdateUserInformation(User userToUpdate)
         {
-            this.userRepo.Update(userToUpdate);
-            this.userRepo.SaveChanges();
+            this.userRepository.Update(userToUpdate);
+            this.userRepository.SaveChanges();
         }
     }
 }

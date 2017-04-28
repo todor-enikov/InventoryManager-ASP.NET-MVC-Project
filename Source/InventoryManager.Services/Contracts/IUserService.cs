@@ -11,6 +11,8 @@ namespace InventoryManager.Services.Contracts
     {
         IQueryable<User> GetAllUsers();
 
+        User GetUserById(string id);
+
         IQueryable<User> GetUsersByUserName(string username);
     }
 }

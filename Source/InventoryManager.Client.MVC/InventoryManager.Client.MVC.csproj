@@ -194,6 +194,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\UserViewModels\AllUsersViewModel.cs" />
+    <Compile Include="Models\UserViewModels\UserClothesViewModel.cs" />
+    <Compile Include="Models\UserViewModels\UserDetailsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

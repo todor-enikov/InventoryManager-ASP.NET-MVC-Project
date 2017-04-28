@@ -23,6 +23,11 @@ namespace InventoryManager.Services
             return this.userRepo.All();
         }
 
+        public User GetUserById(string id)
+        {
+            return this.userRepo.GetById(id);
+        }
+
         public IQueryable<User> GetUsersByUserName(string username)
         {
             return this.userRepo.GetUsersByUserName(username);

@@ -1,7 +1,100 @@
-﻿
+﻿@model InventoryManager.Client.MVC.Models.UserViewModels.UserDetailsViewModel
+
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "User details.";
 }
+<br />
+<br />
+<div class="row">
+    <h1 class="text-center">User details page!</h1>
+    <div class="well col-md-6 col-md-offset-3">
+        <br />
+        <div class="row form-group">
+            <div class="col-md-6 text-right">
+                @Html.Label("Username: ")
+            </div>
+            <div class="col-md-6">
+                @Html.Label(Model.UserName)
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6 text-right">
+                @Html.Label("First name: ")
+            </div>
+            <div class="col-md-6">
+                @Html.Label(Model.FirstName)
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6 text-right">
+                @Html.Label("Last name: ")
+            </div>
+            <div class="col-md-6">
+                @Html.Label(Model.LastName)
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6 text-right">
+                @Html.Label("E-mail: ")
+            </div>
+            <div class="col-md-6">
+                <strong>@Html.Encode(Model.Email)</strong>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-6 text-right">
+                @Html.Label("User role: ")
+            </div>
+            <div class="col-md-6">
+                @Html.Label(Model.Role)
+            </div>
+        </div>
+        @if (User.IsInRole("Administrator"))
+        {
+            using (Html.BeginForm("Details", "User", FormMethod.Post))
+            {
+                <div class="row form-group">
+                    <div class="col-md-12 text-center col-md-offset-3">
+                        <input type="submit" value="Change Role!" class="form-control" />
+                    </div>
+                </div>
+            }
+            <div class="row form-group">
+                <div class="col-md-6 text-right">
+                    @Html.Label("Edit user's details: ")
+                </div>
+                <div class="col-md-6">
+                    @Html.ActionLink("Edit", "Edit", "User", new { id = Model.Id }, null)
+                </div>
+            </div>
+        }
 
-<h2>Details</h2>
-
+        @if (Model.Clothes.Count <= 0)
+        {
+            <div class="row form-group">
+                <div class="col-md-12 text-center">
+                    <label>No clothes added by this user.</label>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="row form-group">
+                <div class="col-md-12 text-center">
+                    <label>All articles of these user.</label>
+                </div>
+            </div>
+            foreach (var clothes in Model.Clothes)
+            {
+                <div class="row form-group col-md-offset-1">
+                    <div class="col-md-8">
+                        @Html.Label(clothes.Name)
+                    </div>
+                    <div class="col-md-4">
+                        @Html.ActionLink("View article", "Details", "News", new { @id = clothes.Id }, null)
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

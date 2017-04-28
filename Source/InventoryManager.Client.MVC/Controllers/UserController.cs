@@ -39,9 +39,38 @@ namespace InventoryManager.Client.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Details()
+        public ActionResult Details(string id)
         {
-            return View();
+            var userById = this.userService
+                               .GetUserById(id);
+
+            var userClothes = new List<UserClothesViewModel>();
+
+            foreach (var clothes in userById.Clothes)
+            {
+                var currentClothes = new UserClothesViewModel()
+                {
+                    Id = clothes.Id,
+                    Name = clothes.Name
+
+                };
+
+                userClothes.Add(currentClothes);
+            }
+            //var role = userById.Roles.Where(r => r.UserId == id).ToList()[0].UserId.;
+
+            var viewModel = new UserDetailsViewModel()
+            {
+                Id = userById.Id,
+                FirstName = userById.FirstName,
+                LastName = userById.LastName,
+                UserName = userById.UserName,
+                Email = userById.Email,
+                Clothes = userClothes,
+                Role = "To Do:"
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]

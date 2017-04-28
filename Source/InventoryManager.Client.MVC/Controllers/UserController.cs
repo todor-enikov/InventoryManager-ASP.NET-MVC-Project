@@ -23,12 +23,13 @@ namespace InventoryManager.Client.MVC.Controllers
         {
             this.userService = userService;
             this.roleService = roleService;
-        }
-
-        public UserController(UserManager userManager)
-        {
             UserManager = userManager;
         }
+
+        //public UserController(UserManager userManager)
+        //{
+        //    UserManager = userManager;
+        //}
 
         public UserManager UserManager
         {

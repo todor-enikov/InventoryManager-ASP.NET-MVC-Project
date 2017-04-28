@@ -1,0 +1,88 @@
+﻿@model InventoryManager.Client.MVC.Models.ClothesViewModels.AddClothesViewModel
+
+@{
+    ViewBag.Title = "Create clothes.";
+}
+<br />
+<br />
+<div class="row">
+    <h1 class="text-center">Create clothes page!</h1>
+    <div class="well col-md-6 col-md-offset-3">
+        <br />
+        @using (Html.BeginForm("Index", "Clothes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("Name: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("Type: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.EnumDropDownListFor(m => m.Type, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Type)
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("Quantity: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Quantity)
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("Size: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.EnumDropDownListFor(m => m.Size, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Size)
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("Price: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Price)
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("Description: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextAreaFor(m => m.Description, new { type = "file", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-4 text-right">
+                    @Html.Label("Choose image: ")
+                </div>
+                <div class="col-md-7">
+                    @Html.TextBoxFor(m => m.ImageFile, new { type = "file", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ImageFile)
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="col-md-6 col-md-offset-3">
+                    <input type="submit" value="Add new clothes" class="form-control">
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

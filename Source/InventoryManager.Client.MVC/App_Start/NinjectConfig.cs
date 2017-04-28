@@ -15,20 +15,20 @@ namespace InventoryManager.Client.MVC.App_Start
     using Services.Contracts;
     using Services;
 
-    public static class NinjectConfig 
+    public static class NinjectConfig
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -36,7 +36,7 @@ namespace InventoryManager.Client.MVC.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -69,8 +69,10 @@ namespace InventoryManager.Client.MVC.App_Start
             kernel.Bind(typeof(IEfGenericRepository<>)).To(typeof(EfGenericRepository<>));
 
             kernel.Bind<IUserRepository>().To<UserRepository>();
+            kernel.Bind<IClothesRepository>().To<ClothesRepository>();
 
             kernel.Bind<IUserService>().To<UserService>();
+            kernel.Bind<IClothesService>().To<ClothesService>();
             kernel.Bind<IRoleService>().To<RoleService>();
 
         }

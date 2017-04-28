@@ -54,14 +54,19 @@
         @if (User.IsInRole("Administrator"))
         {
             <div class="row form-group">
-                <div class="col-md-6 text-right">
+                <div class="col-md-3 text-right">
+                    @Html.Label("Created by: ")
+                </div>
+                <div class="col-md-3">
+                    @Html.Encode(Model.CreatedByUser)
+                </div>
+                <div class="col-md-3 text-right">
                     @Html.Label("Edit clothes details: ")
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     @Html.ActionLink("Edit", "Edit", "Clothes", new { id = Model.Id }, null)
                 </div>
             </div>
         }
-
     </div>
 </div>

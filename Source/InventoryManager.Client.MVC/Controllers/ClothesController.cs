@@ -74,6 +74,54 @@ namespace InventoryManager.Client.MVC.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public ActionResult Edit(Guid id)
+        {
+            var clothesById = this.clothesService.GetClothesById(id);
+
+            var viewModel = new EditClothesViewModel()
+            {
+                Id = clothesById.Id,
+                Name = clothesById.Name,
+                Description = clothesById.Description,
+                Price = clothesById.Price,
+                Quantity = clothesById.Quantity,
+                Size = clothesById.Size,
+                Type = clothesById.Type
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(EditClothesViewModel model)
+        {
+            var clothesToUpdate = this.clothesService.GetClothesById(model.Id);
+
+            var userId = User.Identity.GetUserId();
+            var file = model.ImageFile;
+            this.UploadFile(file);
+
+            if (file != null)
+            {
+                var imagePath = ApplicationConstants.ImagePath + file.FileName;
+                clothesToUpdate.ImagePath = imagePath;
+            }
+            
+            clothesToUpdate.Name = model.Name;
+            clothesToUpdate.Description = model.Description;      
+            clothesToUpdate.Price = model.Price;
+            clothesToUpdate.Quantity = model.Quantity;
+            clothesToUpdate.Size = model.Size;
+            clothesToUpdate.Type = model.Type;
+            clothesToUpdate.UserId = userId;
+
+            this.clothesService.UpdateClothesInformation(clothesToUpdate);
+
+            return RedirectToAction("Details", "Clothes", new { id = model.Id });
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Search(string search)

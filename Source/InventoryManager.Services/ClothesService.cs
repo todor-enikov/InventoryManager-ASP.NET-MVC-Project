@@ -38,5 +38,11 @@ namespace InventoryManager.Services
         {
             return this.clothesRepository.GetClothesByName(name);
         }
+
+        public void UpdateClothesInformation(Clothes clothesToUpdate)
+        {
+            this.clothesRepository.Update(clothesToUpdate);
+            this.clothesRepository.SaveChanges();
+        }
     }
 }

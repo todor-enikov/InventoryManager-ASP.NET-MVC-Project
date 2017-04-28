@@ -13,5 +13,10 @@ namespace InventoryManager.Data.Repositories
             : base(context)
         {
         }
+
+        public IQueryable<Clothes> GetClothesByName(string name)
+        {
+            return this.All().Where(c => c.Name.Contains(name));
+        }
     }
 }

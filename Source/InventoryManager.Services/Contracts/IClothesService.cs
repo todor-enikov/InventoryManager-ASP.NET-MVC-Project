@@ -12,5 +12,7 @@ namespace InventoryManager.Services.Contracts
         void AddNewClothes(Clothes clothes);
 
         IQueryable<Clothes> GetAllClothes();
+
+        IQueryable<Clothes> GetClothesByName(string name);
     }
 }

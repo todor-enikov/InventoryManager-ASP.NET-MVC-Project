@@ -28,5 +28,10 @@ namespace InventoryManager.Services
         {
             return this.clothesRepository.All();
         }
+
+        public IQueryable<Clothes> GetClothesByName(string name)
+        {
+            return this.clothesRepository.GetClothesByName(name);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace InventoryManager.Data.Repositories
 {
     public interface IClothesRepository : IEfGenericRepository<Clothes>
     {
+        IQueryable<Clothes> GetClothesByName(string name);
     }
 }

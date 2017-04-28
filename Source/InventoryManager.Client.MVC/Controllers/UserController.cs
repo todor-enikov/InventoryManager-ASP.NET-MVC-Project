@@ -121,6 +121,7 @@ namespace InventoryManager.Client.MVC.Controllers
 
             return RedirectToAction("Index", "Success");
         }
+
         [HttpGet]
         public ActionResult Edit(string id)
         {

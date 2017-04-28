@@ -53,6 +53,36 @@ namespace InventoryManager.Client.MVC.Controllers
             return RedirectToAction("Index", "Success");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Search(string search)
+        {
+            var clothesModel = this.clothesService.GetClothesByName(search);
+
+            var viewModel = new List<AllClothesViewModel>();
+
+            foreach (var clothes in clothesModel)
+            {
+                var currentClothes = new AllClothesViewModel()
+                {
+                    Id = clothes.Id,
+                    Name = clothes.Name,
+                    Price = clothes.Price,
+                    Quantity = clothes.Quantity,
+                    Type = clothes.Type
+                };
+
+                viewModel.Add(currentClothes);
+            }
+
+            if (viewModel.Count < 1)
+            {
+                return PartialView("_NoResults", viewModel);
+            }
+
+            return PartialView("_AllClothes", viewModel);
+        }
+
         public void UploadFile(HttpPostedFileBase file)
         {
             if (file != null)

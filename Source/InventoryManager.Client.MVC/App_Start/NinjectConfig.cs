@@ -10,6 +10,10 @@ namespace InventoryManager.Client.MVC.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Data;
+    using Data.Repositories;
+    using Services.Contracts;
+    using Services;
 
     public static class NinjectConfig 
     {
@@ -61,6 +65,12 @@ namespace InventoryManager.Client.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IInventoryManagerDbContext>().To<InventoryManagerDbContext>().InRequestScope();
+            kernel.Bind(typeof(IEfGenericRepository<>)).To(typeof(EfGenericRepository<>));
+
+            kernel.Bind<IUserRepository>().To<UserRepository>();
+
+            kernel.Bind<IUserService>().To<UserService>();
         }        
     }
 }

@@ -46,6 +46,20 @@
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InventoryManager.Common\InventoryManager.Common.csproj">
+      <Project>{a08a98d2-679e-4bc8-85ab-c7461d1c91b3}</Project>
+      <Name>InventoryManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InventoryManager.Data.Models\InventoryManager.Data.Models.csproj">
+      <Project>{5e88ffd5-a464-4c4e-b671-568509eac06b}</Project>
+      <Name>InventoryManager.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InventoryManager.Data\InventoryManager.Data.csproj">
+      <Project>{57C1BE2E-D1AA-4E5B-B335-EE3043430472}</Project>
+      <Name>InventoryManager.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

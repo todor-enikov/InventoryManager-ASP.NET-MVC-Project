@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventoryManager.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,8 @@ namespace InventoryManager.Services.Contracts
 {
     public interface IUserService
     {
+        IQueryable<User> GetAllUsers();
+
+        IQueryable<User> GetUsersByUserName(string username);
     }
 }

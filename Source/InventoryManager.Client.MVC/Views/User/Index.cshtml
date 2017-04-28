@@ -1,0 +1,41 @@
+﻿@model List<InventoryManager.Client.MVC.Models.UserViewModels.AllUsersViewModel>
+
+@{
+    ViewBag.Title = "All users.";
+}
+
+<br />
+<h1 class="text-center">All users page!</h1>
+<br />
+<div class="row col-md-offset-3">
+    @using (Ajax.BeginForm("Search", new AjaxOptions
+    {
+        UpdateTargetId = "results",
+        InsertionMode = InsertionMode.Replace
+    }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-3 text-center">
+            @Html.Label("Enter Username: ", null, new { @class = "form-control" })
+        </div>
+        <div class="col-md-3">
+            @Html.TextBox("search", null, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            <input type="submit" class="btn btn-default" value="Search" />
+        </div>
+    }
+
+</div>
+<div id="results">
+    @if (Model.Count <= 0)
+    {
+        @Html.Partial("_NoResults")
+    }
+    else
+    {
+        @Html.Partial("_AllUsers")
+    }
+</div>
+
+

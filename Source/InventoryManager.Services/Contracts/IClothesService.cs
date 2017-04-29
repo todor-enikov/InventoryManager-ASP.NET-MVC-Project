@@ -18,5 +18,7 @@ namespace InventoryManager.Services.Contracts
         IQueryable<Clothes> GetClothesByName(string name);
 
         void UpdateClothesInformation(Clothes clothesToUpdate);
+
+        void DeleteClothes(Guid id);
     }
 }

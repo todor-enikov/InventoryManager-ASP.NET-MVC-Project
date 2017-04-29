@@ -44,5 +44,11 @@ namespace InventoryManager.Services
             this.clothesRepository.Update(clothesToUpdate);
             this.clothesRepository.SaveChanges();
         }
+
+        public void DeleteClothes(Guid id)
+        {
+            this.clothesRepository.Delete(id);
+            this.clothesRepository.SaveChanges();
+        }
     }
 }

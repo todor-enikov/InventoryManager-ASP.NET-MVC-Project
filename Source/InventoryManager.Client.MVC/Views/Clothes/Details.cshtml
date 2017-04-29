@@ -21,7 +21,7 @@
             <div class="col-md-3 text-right">
                 <strong>Description: </strong>
             </div>
-             @Html.Encode(Model.Description)
+            @Html.Encode(Model.Description)
         </div>
         <div class="row form-group">
             <div class="col-md-3 text-right">
@@ -67,6 +67,15 @@
                     @Html.ActionLink("Edit", "Edit", "Clothes", new { id = Model.Id }, null)
                 </div>
             </div>
+            using (Html.BeginForm("Delete", "Clothes", new { Id = Model.Id }, FormMethod.Post, null))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row form-group">
+                    <div class="col-md-12 text-center col-md-offset-3">
+                        <input type="submit" value="Delete clothes!" class="form-control" />
+                    </div>
+                </div>
+            }
         }
     </div>
 </div>

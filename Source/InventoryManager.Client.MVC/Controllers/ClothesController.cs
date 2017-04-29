@@ -108,9 +108,9 @@ namespace InventoryManager.Client.MVC.Controllers
                 var imagePath = ApplicationConstants.ImagePath + file.FileName;
                 clothesToUpdate.ImagePath = imagePath;
             }
-            
+
             clothesToUpdate.Name = model.Name;
-            clothesToUpdate.Description = model.Description;      
+            clothesToUpdate.Description = model.Description;
             clothesToUpdate.Price = model.Price;
             clothesToUpdate.Quantity = model.Quantity;
             clothesToUpdate.Size = model.Size;
@@ -120,6 +120,16 @@ namespace InventoryManager.Client.MVC.Controllers
             this.clothesService.UpdateClothesInformation(clothesToUpdate);
 
             return RedirectToAction("Details", "Clothes", new { id = model.Id });
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Guid id)
+        {
+            this.clothesService.DeleteClothes(id);
+
+            return RedirectToAction("Index", "Success");
         }
 
         [HttpPost]

@@ -124,6 +124,7 @@ namespace InventoryManager.Client.MVC.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = ApplicationConstants.AdminRole)]
         public ActionResult Edit(string id)
         {
             var userById = this.userService
@@ -142,6 +143,7 @@ namespace InventoryManager.Client.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ApplicationConstants.AdminRole)]
         public ActionResult Edit(UserDetailsViewModel model)
         {
             var userToUpdate = userService.GetUserById(model.Id);

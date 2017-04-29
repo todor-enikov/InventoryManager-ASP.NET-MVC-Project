@@ -75,6 +75,7 @@ namespace InventoryManager.Client.MVC.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = ApplicationConstants.AdminRole)]
         public ActionResult Edit(Guid id)
         {
             var clothesById = this.clothesService.GetClothesById(id);
@@ -95,6 +96,7 @@ namespace InventoryManager.Client.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ApplicationConstants.AdminRole)]
         public ActionResult Edit(EditClothesViewModel model)
         {
             var clothesToUpdate = this.clothesService.GetClothesById(model.Id);
@@ -125,6 +127,7 @@ namespace InventoryManager.Client.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = ApplicationConstants.AdminRole)]
         public ActionResult Delete(Guid id)
         {
             this.clothesService.DeleteClothes(id);

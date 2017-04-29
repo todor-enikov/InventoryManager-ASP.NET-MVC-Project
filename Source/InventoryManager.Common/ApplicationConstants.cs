@@ -14,5 +14,8 @@ namespace InventoryManager.Common
 
         // Paths
         public const string ImagePath = "~/Content/Images/";
+
+        // Repository
+        public const string Repository = "The repository should not be null!";
     }
 }

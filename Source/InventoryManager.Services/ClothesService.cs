@@ -1,4 +1,5 @@
-﻿using InventoryManager.Data.Models;
+﻿using InventoryManager.Common;
+using InventoryManager.Data.Models;
 using InventoryManager.Data.Repositories;
 using InventoryManager.Services.Contracts;
 using System;
@@ -15,6 +16,11 @@ namespace InventoryManager.Services
 
         public ClothesService(IClothesRepository clothesRepository)
         {
+            if (clothesRepository == null)
+            {
+                throw new NullReferenceException(ApplicationConstants.Repository);
+            }
+
             this.clothesRepository = clothesRepository;
         }
 

@@ -1,4 +1,5 @@
-﻿using InventoryManager.Data.Models;
+﻿using InventoryManager.Common;
+using InventoryManager.Data.Models;
 using InventoryManager.Data.Repositories;
 using InventoryManager.Services.Contracts;
 using System;
@@ -13,9 +14,14 @@ namespace InventoryManager.Services
     {
         private readonly IUserRepository userRepository;
 
-        public UserService(IUserRepository userRepo)
+        public UserService(IUserRepository userRepository)
         {
-            this.userRepository = userRepo;
+            if (userRepository == null)
+            {
+                throw new NullReferenceException(ApplicationConstants.Repository);
+            }
+
+            this.userRepository = userRepository;
         }
 
         public IQueryable<User> GetAllUsers()

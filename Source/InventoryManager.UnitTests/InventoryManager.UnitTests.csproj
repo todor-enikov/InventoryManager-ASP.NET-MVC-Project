@@ -109,6 +109,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="InventoryManager.Data.Models\ClothesAttributes.cs" />
     <Compile Include="InventoryManager.Data.Models\UserAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

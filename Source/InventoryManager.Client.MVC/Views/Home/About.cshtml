@@ -1,7 +1,18 @@
 ﻿@{
-    ViewBag.Title = "About";
+    ViewBag.Title = "About page.";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
-
-<p>Use this area to provide additional information.</p>
+<br />
+<div class="jumbotron">
+    <h2><strong>ASP.NET MVC Inventory manage application.</strong></h2>
+    <p class="lead">
+        This is application made on ASP .NET MVC.
+        It's purpose is to create clothes by user with role Administrator.
+        The application has administration panel and only user with role "Administrator", can create clothes, edit clothes information, delete clothes, edit information of given user, change role of given user.
+    </p>
+    <h3><strong>Roles in the application and what can they visit.</strong></h3>
+    <ul style="list-style-type: circle">
+        <li>Administrator - can visit all pages in the application.</li>
+        <li>Regular user - can visit home, about, contact, profile, all clothes, all users and details for user and clothes pages.</li>
+        <li>Not registered user - can see only home, about, contact, login, register, view all clothes and details for clothes pages. </li>
+    </ul>
+</div>

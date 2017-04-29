@@ -44,6 +44,7 @@ namespace InventoryManager.Client.MVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Index()
         {
             var userFromDatabase = this.userService.GetAllUsers();
@@ -65,6 +66,7 @@ namespace InventoryManager.Client.MVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Details(string id)
         {
             var userById = this.userService
@@ -103,6 +105,7 @@ namespace InventoryManager.Client.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Details(string id, string un)
         {
             var userById = this.userService.GetUserById(id);
@@ -160,6 +163,7 @@ namespace InventoryManager.Client.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Search(string search)
         {
             var userModel = this.userService

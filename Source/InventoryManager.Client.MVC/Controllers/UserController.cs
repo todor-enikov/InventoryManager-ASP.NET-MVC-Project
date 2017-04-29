@@ -102,6 +102,7 @@ namespace InventoryManager.Client.MVC.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Details(string id, string un)
         {
             var userById = this.userService.GetUserById(id);

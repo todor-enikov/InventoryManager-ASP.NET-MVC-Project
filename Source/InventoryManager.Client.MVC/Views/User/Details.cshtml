@@ -53,6 +53,7 @@
         {
             using (Html.BeginForm("Details", "User", FormMethod.Post))
             {
+                @Html.AntiForgeryToken()
                 <div class="row form-group">
                     <div class="col-md-12 text-center col-md-offset-3">
                         <input type="submit" value="Change Role!" class="form-control" />

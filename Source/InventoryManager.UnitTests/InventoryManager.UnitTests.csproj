@@ -114,6 +114,7 @@
     <Compile Include="InventoryManager.Data.Models\UserModel_Should.cs" />
     <Compile Include="InventoryManager.Data.Models\UserAttributes.cs" />
     <Compile Include="InventoryManager.Data\InventoryManagerDbContext_Should.cs" />
+    <Compile Include="InventoryManager.Data\EfGenericRepository_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

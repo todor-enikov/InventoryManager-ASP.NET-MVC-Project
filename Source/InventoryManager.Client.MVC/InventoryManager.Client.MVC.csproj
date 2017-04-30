@@ -186,6 +186,7 @@
     <Compile Include="App_Start\ViewEngineConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClothesController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SuccessController.cs" />
@@ -207,6 +208,11 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ImagesForErrors\400-badrequest.jpg" />
+    <Content Include="Content\ImagesForErrors\401-unauthorized.jpg" />
+    <Content Include="Content\ImagesForErrors\403-forbidden.jpg" />
+    <Content Include="Content\ImagesForErrors\404-NotFound.jpg" />
+    <Content Include="Content\ImagesForErrors\500-IternalServerError.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -257,6 +263,11 @@
     <Content Include="Views\Shared\_AllClothes.cshtml" />
     <Content Include="Views\Clothes\Details.cshtml" />
     <Content Include="Views\Clothes\Edit.cshtml" />
+    <Content Include="Views\Error\BadRequest.cshtml" />
+    <Content Include="Views\Error\Forbidden.cshtml" />
+    <Content Include="Views\Error\InternalServer.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\UnAuthorized.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

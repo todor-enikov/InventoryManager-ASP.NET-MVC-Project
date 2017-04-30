@@ -117,6 +117,7 @@
     <Compile Include="InventoryManager.Data\EfGenericRepository_Should.cs" />
     <Compile Include="InventoryManager.Data\ClothesRepository_Should.cs" />
     <Compile Include="InventoryManager.Data\UserRepository_Should.cs" />
+    <Compile Include="InventoryManager.Services\UserService_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
